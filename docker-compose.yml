@@ -74,8 +74,7 @@ services:
       JAVA_TOOL_OPTIONS: --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED
     volumes:
       - flink_data:/opt/flink/usrlib
-    entrypoint: ["bash", "-lc", "./bin/flink run -d -m http://flink-jobmanager:8081 /opt/flink/usrlib/app.jar"]
-    
+    entrypoint: [ "bash", "-lc", "./bin/flink run -d -m http://flink-jobmanager:8081 /opt/flink/usrlib/app.jar" ]
 volumes:
   mongo_data: {}
   flink_data: {}
