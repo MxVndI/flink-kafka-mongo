@@ -26,6 +26,13 @@
             <version>${flink.version}</version>
         </dependency>
 
+        <!-- Flink clients (needed for executors/services on client side) -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-clients</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
         <!-- Kafka connector aligned with Flink 1.17.x -->
         <dependency>
             <groupId>org.apache.flink</groupId>
@@ -92,6 +99,8 @@
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.example.KafkaFlinkToMongoJob</mainClass>
                                 </transformer>
+                                <!-- Merge META-INF/services to keep Flink executor/service discovery -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                             <artifactSet>
                                 <excludes>

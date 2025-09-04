@@ -36,6 +36,7 @@ public class KafkaFlinkToMongoJob {
         String mongoPassword = env("MONGO_PASSWORD", "");
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.getConfig().disableClosureCleaner();
 
         KafkaSource<String> kafkaSource = KafkaSource.<String>builder()
                 .setBootstrapServers(kafkaBootstrap)
